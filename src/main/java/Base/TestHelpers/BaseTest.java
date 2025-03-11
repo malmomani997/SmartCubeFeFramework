@@ -89,11 +89,11 @@ public class BaseTest {
 
     private ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless"); // Enable for docker
-        options.addArguments("--no-sandbox"); // Enable for docker
-        options.addArguments("--disable-gpu"); // Enable for docker
-        options.setBinary("/usr/bin/google-chrome"); // Enable for docker
-        options.addArguments("--remote-allow-origins=*"); // Enable for docker
+//        options.addArguments("--headless"); // Enable for docker
+//        options.addArguments("--no-sandbox"); // Enable for docker
+//        options.addArguments("--disable-gpu"); // Enable for docker
+//        options.setBinary("/usr/bin/google-chrome"); // Enable for docker
+//        options.addArguments("--remote-allow-origins=*"); // Enable for docker
         options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"); // Enable for docker
         options.addArguments("--window-size=1920,1080");
         return options;
@@ -102,7 +102,7 @@ public class BaseTest {
     private FirefoxOptions getFirefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
         FirefoxProfile profile = new FirefoxProfile();
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
         profile.setPreference("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3");
         System.setProperty("webdriver.firefox.bin", "/usr/bin/firefox");
