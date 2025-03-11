@@ -1,107 +1,110 @@
-SmartCube Automation Framework
+# 🐾 PetStore Automation Testing Framework (SmartCubeFeFramework)
 
-This repository contains a robust, scalable Selenium WebDriver automation framework designed for automating the testing of the PetStore web application. It employs the Page Object Model (POM), TestNG for test execution, ExtentReports for reporting, and supports cross-browser testing and Docker execution.
+An automation testing framework built using **Java**, **Selenium WebDriver**, and **TestNG**, following the Page Object Model (POM) design pattern. This framework simplifies automated test creation, execution, and reporting for web applications—demonstrated with the PetStore example application.
 
-🚀 Key Features
+---
 
-Page Object Model (POM): Clean separation of page locators and test scripts.
+## 🚀 Overview
 
-Data-Driven Testing: JSON-based test data providers using Jackson.
+This test automation framework includes:
 
-Cross-Browser Testing: Supports Chrome, Firefox, and Edge.
+- **Page Object Model (POM)** structure for easy maintainability and scalability.
+- Support for multiple browsers (**Chrome, Firefox, Edge**) with headless options.
+- Robust test data management using JSON files and DataProviders.
+- Detailed logging and reporting using **ExtentReports**.
+- Screenshot capturing upon test failures.
+- Integration with TestNG and annotations for flexible test execution.
 
-Docker Compatible: Configured for headless execution in CI/CD pipelines.
+---
 
-Detailed Reporting: Integrated ExtentReports with automated screenshots on failures.
+## 🛠️ Framework Components
 
-Retry Mechanism: Automatically retries failed tests.
+### **1. DTOs (`SCDTO`)**
+- Maps JSON test data to Java objects using Jackson annotations.
 
-📂 Project Structure
+### **2. Shared Elements (`SharedElementsHelper`)**
+- Encapsulates common WebDriver operations:
+  - Wait utilities (visibility, clickable, etc.)
+  - Element interactions (clicks, scrolling, actions)
+  - Element validations
 
-SmartCubeFeFramework/
-├── src/
-│   └── main/
-│       └── java/
-│           └── Base/
-│               ├── DTOs/
-│               ├── PagesHelper/
-│               ├── Resources/
-│               ├── SharedElements/
-│               ├── TestHelpers/
-│               └── dataProviders/
-├── reports/
-├── screenshots/
-├── pom.xml
-└── testng.xml
+### **3. Page Helpers**
+- **`AbstractPageHelper`**:
+  - Base class for all Page Helpers, initializing web elements via Selenium’s `PageFactory`.
 
-🛠️ Tech Stack
+- **Page-specific helpers**:
+  - Encapsulate specific page logic and elements (`PetStoreHomePageHelper`, `PetStoreRegistrationPageHelper`, `PetStoreCheckoutPageHelper`).
+  - Clearly annotated Selenium web elements with `@FindBy`.
+  - Simplified interactions through dedicated methods (e.g., `completeLogin()`, `fillRegistrationFormAndSubmit()`).
 
-Selenium WebDriver
+### **4. Test Helpers (`BaseTest`)**
+- Browser setup and teardown:
+  - Uses WebDriverManager.
+  - Supports parallel execution via ThreadLocal.
+  - Captures screenshots automatically upon test failure.
 
-TestNG
+- Includes extensive configuration options for Chrome, Firefox, and Edge browsers.
 
-WebDriverManager
+### **5. Data Providers (`DataGenerator`)**
+- Dynamically loads and provides test data from JSON files based on the executing test method.
+- Supports easy extension for multiple DTO types.
+- Provides clear logging and error handling for robust debugging.
 
-ExtentReports
+### **6. Test Execution (`SCTestCases`)**
+- Includes clear test methods demonstrating:
+  - User registration flow.
+  - User login validation.
+  - Checkout process with item addition and price validation.
 
-Jackson Databind
+### **7. Retry Analyzer (`Retry`)**
+- Implements automatic test retry logic for transient failures.
 
-Apache Commons IO
+---
 
-Lombok
+## 🚦 Execution Instructions
 
-⚙️ Installation & Execution
+### **Prerequisites:**
 
-Prerequisites
+- **Java 17** (or higher)
+- **Maven**
+- **Selenium WebDriver**
+- **WebDriverManager**
+- **TestNG**
+- **ExtentReports**
+- **Jackson** (for JSON parsing)
+- **Lombok** (for cleaner code)
 
-Java JDK 11+
+### **Installing Dependencies**
 
-Maven
+Execute the following Maven command in your project root:
 
-Running Tests
+```shell
+mvn clean install
 
-Execute tests using Maven:
+## 📊 Test Reports
 
-mvn clean test
+### ExtentReports:
+- Automatically generated after each test suite execution.
+- Stored in the `reports/` directory.
 
-Specify a browser (default: Chrome):
+### Screenshots:
+- Automatically captured upon test failures.
+- Stored in the `screenshots/` directory.
 
-mvn clean test -Dbrowser=firefox
+---
 
-Docker Execution
+## ⚙️ Continuous Integration (CI)
 
-The framework is pre-configured for Docker execution with headless browsers.
+This project fully supports integration with CI/CD tool :
 
-📊 Test Reports
+- **GitHub Actions**
 
-Detailed reports are generated automatically after each test execution. Access the reports at:
+---
 
-/reports/index.html
+## 🗃️ Data-Driven Testing
 
-📝 Test Scenarios Included
+Test data is stored in JSON format at:
 
-User Registration
+```shell
+/src/main/java/Base/dataProviders/ScTestData.json
 
-User Login
-
-Product Selection and Checkout
-
-🔄 Retry Mechanism
-
-Failed tests automatically retry once to manage flaky scenarios, configurable via Retry.java.
-
-📸 Screenshots
-
-Screenshots on test failures are automatically captured and stored in:
-
-/reports/screenshots/
-
-📈 Future Improvements
-
-Enhanced logging
-
-Extended browser support
-
-Additional integration with CI/CD tools
-
-Happy Testing! 🚀
