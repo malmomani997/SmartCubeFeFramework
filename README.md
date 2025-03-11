@@ -80,6 +80,7 @@ Execute the following Maven command in your project root:
 
 ```shell
 mvn clean install
+```
 
 ## 📊 Test Reports
 
