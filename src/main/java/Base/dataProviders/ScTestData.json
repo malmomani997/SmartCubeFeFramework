@@ -1,0 +1,28 @@
+{
+  "registrationFlowOnPetStore": {
+    "userId" : "Mohammads44",
+    "newPassword" : "Test12345",
+    "firstName": "Mohammad",
+    "familyName": "Almomani",
+    "email" : "Mohmmad97@gmai.com",
+    "phoneNumber": "0754264598",
+    "addressOne": "Al-Noor St",
+    "addressTwo": "Al-Shamali St",
+    "city": "Riyadh",
+    "state": "Riyadh",
+    "zip" : "11191",
+    "Country": "KSA",
+    "languagePreference": "japanese",
+    "favouriteCategory": "DOGS"
+  },
+
+  "signInToPetStore": {
+    "userId": "Mohammads44",
+    "newPassword" : "Test12345"
+  },
+
+  "addToCartAndCompleteCheckoutWithALoggedInUser": {
+    "userId": "Mohammads44",
+    "newPassword" : "Test12345"
+  }
+}
